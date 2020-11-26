@@ -1,12 +1,12 @@
-import pyttsx3   #We have to install this model by typing on terminal, pip install pyttsx3
+import pyttsx3   #Text-to-Speech Conversion library, pip install pyttsx3
 import speech_recognition as sr #pip install speechRecognition
 import datetime  #Not need to install but we need to import it for dattime argument
 import wikipedia #pip install wikipedia
-import webbrowser
-import os
-import smtplib #package in pyhton for sending mail
+import webbrowser #For browser opening
+import os #For dekstop path access
+import smtplib #Package in pyhton for sending mail
 
-engine = pyttsx3.init('sapi5') #sapi5 is to use inbuilt voices in windows
+engine = pyttsx3.init('sapi5') #sapi5 is Speech Application Programming Interface or SAPI, an API developed by Microsoft to use inbuilt voices in windows
 voices = engine.getProperty('voices')
 #print(voices[0].id)
 engine.setProperty('voice',voices[1].id)
@@ -34,7 +34,7 @@ def takeCommand():
     r = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listenning......")
-        r.pause_threshold = 1 #press ctr+entr for more details
+        r.pause_threshold = 1 #Manage the gap between input speech, press ctr+entr for more details
         audio = r.listen(source)
     
     try:
@@ -117,8 +117,10 @@ if __name__ == "__main__":
 
         #Algorithm for playing music from files
         '''elif 'play music' in query:
-            music_dir = 'D:\\Non Critical\\songs\\Favourite Songs' #Basically you have to include here your music deirectry file
+            music_dir = 'D:\\Non Critical\\songs\\Favourite Songs' #Basically we have to include here our music deirectry file
             songs = os.listdir(music_dir)
             print(songs)
             os.startfile(os.path.join(music_dir, songs[0]))'''
+        elif 'quit' in query:
+            exit()
 
